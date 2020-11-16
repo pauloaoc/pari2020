@@ -2,7 +2,7 @@
 import argparse
 import cv2
 
-# Global variables
+# Global variablesgit sta
 #window_name = 'window - Ex3a'
 #image_gray = None
 import json
