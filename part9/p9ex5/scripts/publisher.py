@@ -11,11 +11,9 @@ def main():
     topic_name = 'chatter'
 
     pub = rospy.Publisher(topic_name, Dog, queue_size=10)
-    rospy.init_node('publisher', anonymous=False)
-    try:
-        frequency = rospy.get_param('~freq')
-    except:
-        frequency = 0.1  # Hz
+    rospy.init_node('publisher', anonymous=True)
+    frequency = rospy.get_param('~freq', 1)
+
     rate = rospy.Rate(frequency)
 
     dog_msg = Dog()

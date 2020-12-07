@@ -1,0 +1,38 @@
+<launch>
+    
+    <arg name="run_publishers" default="true"/>
+
+    <group if="$(arg run_publishers)">
+        <node pkg="p9ex5" type="publisher.py" name="Pub_A">
+            <param name="freq" value="1" type="double"/>
+            <remap from="chatter" to="dog1"/>
+        </node>
+
+        <node pkg="p9ex5" type="publisher.py" name="Pub_B">
+            <param name="freq" value="3" type="double"/>
+            <remap from="chatter" to="dog1"/>
+        </node>
+
+        <node pkg="p9ex5" type="publisher.py" name="Pub_C">
+            <param name="freq" value="1" type="double"/>
+            <remap from="chatter" to="dog2"/>
+        </node>
+    </group>
+    <group unless="$(arg run_publishers)">
+        <node pkg="rosbag" type="play" name="rosbag" args="$(env HOME)/catkin_ws/src/pari2020/part9/p9ex5/test_bag.bag -l"/>
+    </group>
+    
+    <group>
+        <node pkg="p9ex5" type="subscriber.py" name="Sub_AB1">
+            <remap from="chatter" to="dog1"/>
+        </node>
+        <node pkg="p9ex5" type="subscriber.py" name="Sub_AB2">
+            <remap from="chatter" to="dog1"/>
+        </node>
+        <node pkg="p9ex5" type="subscriber.py" name="Sub_C">
+            <remap from="chatter" to="dog2"/>
+        </node>
+        <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph"/>
+    </group>
+
+</launch>
