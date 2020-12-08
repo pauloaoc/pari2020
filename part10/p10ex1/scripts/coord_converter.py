@@ -2,13 +2,14 @@
 
 from colorama import Fore
 import rospy
-from sensor_msgs.msg import LaserScan, PointCloud2 ,PointField
+from sensor_msgs.msg import LaserScan, PointCloud2, PointField
 from sensor_msgs import point_cloud2
 from std_msgs.msg import Header
 from math import cos, sin
 
 # Global Var
 pub = None
+
 
 def callback(message):
     nmeasures = len(message.ranges)
@@ -24,7 +25,7 @@ def callback(message):
         z = 0
         pt = [x, y, z]
         points.append(pt)
-        i =+ 1
+        i = + 1
 
     # Message config
     fields = [PointField('x', 0, PointField.FLOAT32, 1),
@@ -32,7 +33,7 @@ def callback(message):
               PointField('z', 8, PointField.FLOAT32, 1)
               ]
     header = Header()
-    header.frame_id = "/left_laser/laserscan"
+    header.frame_id = message.header.frame_id
     pc2 = point_cloud2.create_cloud(header, fields, points)
     pub.publish(pc2)
 
@@ -41,8 +42,8 @@ def main():
     topic_name = 'chatter'
     rospy.init_node('Converter', anonymous=False)
     rospy.Subscriber(topic_name, LaserScan, callback)
-    globals
-    rospy.Publisher('~PointCloud2', PointCloud2, queue_size=10)
+    global pub
+    pub = rospy.Publisher('~point_cloud2', PointCloud2, queue_size=10)
 
     rospy.spin()
 

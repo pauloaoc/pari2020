@@ -1,10 +1,10 @@
 <launch>
     <group>
-        <node pkg="p10ex1" type="coord_converter.py" name="Converter"/>
-            <remap from="chatter" to="/left_laser/laserscan"/>
+        <remap from="chatter" to="/left_laser/laserscan"/>
         <node pkg="rosbag" type="play" name="rosbag" args="$(env HOME)/catkin_ws/src/pari2020/part10/p10ex1/lidar_test.bag -l"/>
+        <node pkg="p10ex1" type="coord_converter.py" name="Converter"/>
         <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph"/>
-        <node pkg="rviz" type="rviz" name="rviz" args="$(env HOME)/catkin_ws/src/pari2020/part10/p10ex1/config/rviz_config.rviz"/>
+        <node pkg="rviz" type="rviz" name="rviz" args=" -d $(env HOME)/catkin_ws/src/pari2020/part10/p10ex1/config/rviz_config.rviz"/>
 
     </group>
 </launch>
