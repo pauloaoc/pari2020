@@ -3,6 +3,7 @@
   <xacro:arg name="laser_visual"  default="false"/>
   <xacro:arg name="camera_visual" default="false"/>
   <xacro:arg name="imu_visual"    default="false"/>
+  <xacro:include filename="$(find p_pcardoso_description)/urdf/ros_diff_drive.gazebo.xacro"/>
 
   <gazebo reference="base_link">
     <material>Gazebo/DarkGrey</material>

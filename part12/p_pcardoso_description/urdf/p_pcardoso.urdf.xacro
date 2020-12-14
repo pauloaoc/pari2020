@@ -1,7 +1,9 @@
 <?xml version="1.0" ?>
 <robot name="turtlebot3_waffle" xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:include filename="$(find p_pcardoso_description)/urdf/common_properties.xacro"/>
-  <xacro:include filename="$(find p_pcardoso_description)/urdf/turtlebot3_waffle.gazebo.xacro"/>
+  <xacro:include filename="$(find p_pcardoso_description)/urdf/properties.xacro"/>
+  <xacro:include filename="$(find p_pcardoso_description)/urdf/p_pcardoso.gazebo.xacro"/>
+
+  <xacro:arg name="player_color" default="Orange" /> <!-- e.g. Red, Orange. Must exist in Gazebo/Colors and be defined in properties.xacro.-->
 
   <xacro:property name="r200_cam_rgb_px" value="0.005"/>
   <xacro:property name="r200_cam_rgb_py" value="0.018"/>
