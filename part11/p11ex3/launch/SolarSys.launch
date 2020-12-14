@@ -1,0 +1,51 @@
+<launch>
+    <!--Mercury-->
+    <node pkg="p11ex3" type="orbitMaker.py" name="My2S">
+        <param name="parent" value="Sun" type="string"/>
+        <param name="child" value="Mercury" type="string"/>
+        <param name="velocity" value="1.59" type="double"/>
+        <param name="radius" value="0.387" type="double"/>
+        <param name="vel_rot" value="0.0114" type="double"/>
+    </node>
+
+    <!--Venus-->
+    <node pkg="p11ex3" type="orbitMaker.py" name="V2S">
+        <param name="parent" value="Sun" type="string"/>
+        <param name="child" value="Venus" type="string"/>
+        <param name="velocity" value="1.18" type="double"/>
+        <param name="radius" value="0.723" type="double"/>
+        <param name="vel_rot" value="0.0041" type="double"/>
+    </node>
+
+    <!--Earth-->
+    <node pkg="p11ex3" type="orbitMaker.py" name="E2S">
+        <param name="parent" value="Sun" type="string"/>
+        <param name="child" value="Earth" type="string"/>
+        <param name="velocity" value="1" type="double"/>
+        <param name="radius" value="1" type="double"/>
+        <param name="vel_rot" value="1" type="double"/>
+    </node>
+
+    <!--Moon-->
+    <node pkg="p11ex3" type="orbitMaker.py" name="M2E">
+        <param name="parent" value="Earth" type="string"/>
+        <param name="child" value="Moon" type="string"/>
+        <param name="velocity" value="0.0343" type="double"/>
+        <param name="radius" value="0.00257" type="double"/>
+        <param name="vel_rot" value="0.0343" type="double"/>
+    </node>
+
+    <!--Mars-->
+    <node pkg="p11ex3" type="orbitMaker.py" name="Ms2S">
+        <param name="parent" value="Sun" type="string"/>
+        <param name="child" value="Mars" type="string"/>
+        <param name="velocity" value="0.808" type="double"/>
+        <param name="radius" value="1.52" type="double"/>
+        <param name="vel_rot" value="0.98" type="double"/>
+    </node>
+
+    <!--Debug-->
+    <node pkg="rqt_graph" type="rqt_graph" name="rqt_graph"/>
+    <node pkg="rviz" type="rviz" name="rviz" args=" -d $(env HOME)/catkin_ws/src/pari2020/part11/p11ex3/configs/rvizConfig.rviz"/>
+
+</launch>
